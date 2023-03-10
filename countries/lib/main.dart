@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:countries/screens/list-of-countris.dart';
-import 'package:countries/screens/display-country.dart';
+import 'package:countries/screens/list_of_countris.dart';
+import 'package:countries/screens/display_country.dart';
+// import 'package:provider/provider.dart';
+import 'package:countries/provider-files/getting_details.dart';
+import 'package:provider/provider.dart';
+// import 'package:countries/';
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => GettingDetails(),
+      child:const MyApp()
+    ));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,6 +37,7 @@ class MyApp extends StatelessWidget {
               name: args.name,
               capital: args.capital,
               flag: args.flag,
+              indexOfCountry:args.indexOfCountry
             );
           },
         );
@@ -47,13 +55,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  // int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  // void _incrementCounter() {
+  //   setState(() {
+  //     _counter++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -62,24 +70,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
+        
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // children: <Widget>[
+          //   const Text(
+          //     'You have pushed the button this many times:',
+          //   ),
+          //   Text(
+          //     '$_counter',
+          //     style: Theme.of(context).textTheme.headlineMedium,
+          //   ),
+          // ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
